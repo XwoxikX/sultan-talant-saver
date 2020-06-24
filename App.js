@@ -11,7 +11,7 @@ app.use ("/api/sultan",require('./routes/sultan.routes'))
 
 const PORT = config.get('port') || 5001
 
-if(process.env.NODE_ENV==='production'){
+if( process.env.NODE_ENV ==='production'){
   app.use('/',express.static(path.join(__dirname, 'client','build')) )
 
 	app.get('*',(req,res) => {
