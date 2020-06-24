@@ -9,14 +9,15 @@ app.use(express.json({extended:true }))
 
 app.use ("/api/sultan",require('./routes/sultan.routes'))
 
-const PORT = config.get('port') || 5001
+const PORT = process.env.PORT || 5001
 
 if( process.env.NODE_ENV ==='production'){
-  app.use('/',express.static(path.join(__dirname, 'client','build')) )
-
-	app.get('*',(req,res) => {
-         res.sendFile(path.resolve(__dirname,'client','build','index.html'))
-	})
+  // app.use('/',express.static(path.join(__dirname, 'client','build')) )
+  //
+	// app.get('*',(req,res) => {
+  //        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+	// })
+	app.use(express.static('client/build'))
 }
 
 
